@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @shopping.item %></h1>
+  <p><%= @shopping.comment %></p>
+  <p class="lead">  <strong>Size:</strong>
+    <%= @shopping.size %></p>
+    <p class="lead">  <strong>Qty:</strong>
+      <%= @shopping.quantity %></p>
+      <p class="lead">  <strong>Comments:</strong>
+        <%= @shopping.comment %></p>
+      <p class="lead">  <strong>Created:</strong>
+        <%= @shopping.created_at %></p>
+  <br/>
+  <%= link_to 'Edit', edit_shopping_path(@shopping), class:"btn btn-secondary" %>
+  <%= link_to 'Back', shoppings_path, class:"btn btn-dark" %>
+</div>

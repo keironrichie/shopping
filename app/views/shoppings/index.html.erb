@@ -1,0 +1,49 @@
+
+<% if user_signed_in?%>
+<h1>Shopping List</h1>
+
+  <table class="table table-light table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Item</th>
+        <th>Size</th>
+        <th>Quantity</th>
+        <th colspan="3"> Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @shoppings.each do |shopping| %>
+        <% if shopping.user == current_user %>
+        <tr>
+          <td><%= shopping.item %></td>
+          <td><%= shopping.size %></td>
+          <td><%= shopping.quantity %></td>
+          <td><%= link_to 'View', shopping_path(shopping), class:"btn btn-outline-secondary btn-sm" %></td>
+          <td><%= link_to 'Edit', edit_shopping_path(shopping), class:"btn btn-outline-secondary btn-sm" %></td>
+          <td><%= link_to 'Purchased', shopping, class:"btn btn-success btn-sm", method: :delete, data: { confirm: 'Remove from shopping list?' } %></td>
+
+          </tr>
+         <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Add item to list', new_shopping_path, class:"btn btn-outline-success" %>
+<% else %>
+
+<h1>Welcome to the Pink's Shopping App</h1>
+<br>
+
+<% if user_signed_in? %>
+
+<%= link_to 'View shopping list', shoppings_path, class:"btn btn-dark"%>
+<%= link_to 'Sign Out',  destroy_user_session_path, method: :delete, class:"btn btn-dark"%>
+
+<% else %>
+<%= link_to 'Sign in', new_user_session_path, class:"btn btn-dark"%>
+<%= link_to 'Register', new_user_registration_path, class:"btn btn-dark"%>
+  <% end %>
+<% end %>

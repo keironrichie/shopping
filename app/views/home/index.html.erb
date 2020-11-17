@@ -1,0 +1,12 @@
+<h1>Welcome to the Pink's Shopping App</h1>
+<br>
+
+<% if user_signed_in? %>
+
+<%= link_to 'View shopping list', shoppings_path, class:"btn btn-dark"%>
+<%= link_to 'Sign Out',  destroy_user_session_path, method: :delete, class:"btn btn-dark"%>
+
+<% else %>
+<%= link_to 'Sign in', new_user_session_path, class:"btn btn-dark"%>
+<%= link_to 'Register', new_user_registration_path, class:"btn btn-dark"%>
+  <% end %>

@@ -1,0 +1,9 @@
+<h1>Edit Item</h1>
+
+<%= render 'form', shopping: @shopping %>
+<br/>
+<% link_to 'Show', @shopping, class:'btn btn-dark'%>
+
+<%= link_to 'Delete', @shopping, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Back', shoppings_path, class:'btn btn-dark' %>
